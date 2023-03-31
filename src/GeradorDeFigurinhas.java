@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 public class GeradorDeFigurinhas {
     
 
-    void cria(InputStream inputStream, String nomeArquivo, String frase) throws Exception{
+    void cria(InputStream inputStream, String nomeArquivo) throws Exception{
         
         // leitura da imagem
         //InputStream inputStream = new FileInputStream(new File("entrada/filme.jpg"));
@@ -21,7 +21,7 @@ public class GeradorDeFigurinhas {
          // cria nova imagem em memória com transparencia e com tamanho novo
         int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
-        int novaAltura = altura + 300;
+        int novaAltura = altura + 200;
 
         BufferedImage novaImagem = new BufferedImage(largura, novaAltura, BufferedImage.TRANSLUCENT);
 
@@ -30,13 +30,13 @@ public class GeradorDeFigurinhas {
         graphics.drawImage(imagemOriginal, 100, 0, null);
         
         // configuara a fonte
-        int fontSize = (int) (0.065 * largura);
-        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, fontSize);
+        
+        var fonte = new Font(Font.SANS_SERIF, Font.BOLD, 64);
         graphics.setColor(Color.YELLOW);
         graphics.setFont(fonte);
 
         // escrever uma frase na nova imagem
-        graphics.drawString(frase,  175, novaAltura - 200);
+        graphics.drawString("TOPZERA",  175, novaAltura - 200);
 
         // escrever a nova imagem em um arquivo
         ImageIO.write(novaImagem, "png", new File(nomeArquivo));
